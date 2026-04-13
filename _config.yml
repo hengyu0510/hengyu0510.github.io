@@ -4,6 +4,9 @@ url: "https://hengyu0510.github.io"
 baseurl: ""
 permalink: /posts/:year-:month-:day-:title/
 
+kramdown:
+  math_engine: mathjax
+
 exclude:
   - README.md
   - LICENSE
