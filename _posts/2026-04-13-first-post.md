@@ -15,10 +15,6 @@ description: "这是我的个人主页的第一篇文章。"
 - **生活随笔**：在同济校园里的日常，以及一些个人感悟
 - **读书笔记**：读过的好书，值得记录的段落和想法
 
-## 关于这个网站
-
-这个主页使用纯 HTML、CSS 和 JavaScript 构建，托管在 GitHub Pages 上。没有使用任何框架或构建工具，一切从简。个人主页不需要太复杂的技术栈（我也不会），能把内容呈现清楚就好。（这一段是claude code帮我写的）
-
 > The best time to plant a tree was 20 years ago. The second best time is now.（AI写的，别管了）
 
 So let's start today.
