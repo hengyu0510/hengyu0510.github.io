@@ -1,22 +1,173 @@
 ---
 layout: default
+hero: true
 ---
 
-<main class="main-content">
-  <section class="post-list">
+<section class="hero-shell" id="top">
+  <div class="hero-sticky">
+    <canvas id="scene-canvas" aria-hidden="true"></canvas>
+    <div class="hero-copy-scrim"></div>
 
-    {% for post in site.posts %}
-    <article class="post-item">
-      <time class="post-date" datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: '%Y年%-m月%-d日' }}</time>
-      <h2 class="post-title">
-        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-      </h2>
-      <p class="post-excerpt">
-        {{ post.excerpt | strip_html | truncate: 120 }}
-      </p>
-      <a href="{{ post.url | relative_url }}" class="read-more">阅读全文 &rarr;</a>
-    </article>
-    {% endfor %}
+    <div class="hero-layout">
+      <div class="hero-copy">
+        <p class="hero-greeting">Hi! I'm</p>
+        <h1 class="hero-title">Hengyu</h1>
+        <div class="hero-meta" aria-label="Introduction">
+          <p class="hero-meta-badge">Tongji University '27</p>
+          <ul class="hero-tags hero-tags-compact" aria-label="Interests">
+            <li>Mathematics</li>
+            <li>AI research</li>
+            <li>Learning notes</li>
+          </ul>
+        </div>
+      </div>
+    </div>
 
+    <button
+      class="scroll-cue"
+      type="button"
+      data-scroll-target="#intro"
+      aria-label="Scroll to content"
+    >
+      <span>Scroll</span>
+      <span class="scroll-line"></span>
+    </button>
+  </div>
+</section>
+
+<main class="content-shell">
+  <section class="section panel reveal" id="intro">
+    <div class="profile-grid">
+      <div class="profile-copy">
+        <div class="profile-heading">
+          <p class="profile-name">Hengyu Wang</p>
+          <p class="profile-email">2746432398@qq.com</p>
+        </div>
+
+        <p>
+          Hello, I'm Hengyu Wang, an undergraduate student at Tongji University.
+          This site is my working notebook for mathematics, AI, reading, and projects.
+        </p>
+        <p>
+          I use this homepage to collect study notes, project writeups, and small
+          reflections from campus life. The current focus is building a cleaner
+          research-style archive around topics I am learning in public.
+        </p>
+
+        <p class="profile-links">
+          <a href="mailto:2746432398@qq.com">Email</a>
+          <a href="https://github.com/hengyu0510" target="_blank" rel="noreferrer">Github</a>
+          <a href="https://www.xiaohongshu.com/user/profile/62aa8c18000000001b0255d7" target="_blank" rel="noreferrer">RedNote</a>
+          <a href="{{ '/about.html' | relative_url }}">About</a>
+        </p>
+      </div>
+
+      <aside class="profile-side">
+        <div class="profile-portrait profile-placeholder" aria-hidden="true">
+          <span>HW</span>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section panel reveal" id="notes">
+    <div class="section-head">
+      <div>
+        <p class="section-kicker">Notes</p>
+      </div>
+    </div>
+
+    <div class="paper-list">
+      {% for post in site.posts %}
+      {% assign note_title = post.title %}
+      {% assign note_excerpt = post.excerpt | strip_html | normalize_whitespace | truncate: 180 %}
+      {% if post.path contains '2026-04-13-first-post' %}
+        {% assign note_title = 'My First Post' %}
+        {% assign note_excerpt = 'A short welcome note for the personal homepage and future learning records.' %}
+      {% elsif post.path contains 'Packingstar-Framework' %}
+        {% assign note_title = 'PackingStar Framework' %}
+        {% assign note_excerpt = 'A study note on game-theoretic reinforcement learning for kissing number search.' %}
+      {% elsif post.path contains 'From-Adam-to-Muon' %}
+        {% assign note_title = 'From Adam to Muon' %}
+        {% assign note_excerpt = 'A short optimizer note starting from Adam and Muon.' %}
+      {% endif %}
+      <article class="note-card paper-card{% if forloop.first %} paper-card-highlight{% endif %}">
+        <time class="note-date" datetime="{{ post.date | date: '%Y-%m-%d' }}">
+          {{ post.date | date: '%Y.%m' }}
+        </time>
+        <div class="paper-body">
+          <h3 class="note-title">
+            <a href="{{ post.url | relative_url }}">{{ note_title }}</a>
+          </h3>
+          <p class="note-excerpt">{{ note_excerpt }}</p>
+          <a class="note-link" href="{{ post.url | relative_url }}">Read note</a>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="section panel reveal" id="projects">
+    <div class="section-head">
+      <div>
+        <p class="section-kicker">Projects</p>
+      </div>
+    </div>
+
+    <div class="paper-list">
+      {% assign packingstar_url = '/' %}
+      {% for post in site.posts %}
+        {% if post.path contains 'Packingstar-Framework' %}
+          {% assign packingstar_url = post.url %}
+        {% endif %}
+      {% endfor %}
+      <article class="paper-card paper-card-highlight">
+        <div class="paper-media">
+          <img src="{{ '/assets/images/Framework.png' | relative_url }}" alt="PackingStar framework diagram">
+        </div>
+        <div class="paper-body">
+          <h3 class="paper-title">
+            <a href="{{ packingstar_url | relative_url }}">
+              PackingStar Framework
+            </a>
+          </h3>
+          <p class="paper-authors">
+            A study note on game-theoretic reinforcement learning for kissing number search.
+          </p>
+          <p class="paper-links">
+            <a href="{{ packingstar_url | relative_url }}">Writeup</a>
+            <span>/</span>
+            <a href="https://arxiv.org/html/2511.13391v1" target="_blank" rel="noreferrer">Paper</a>
+          </p>
+          <p class="paper-venue">
+            <em>Mathematics, AI, reinforcement learning</em>
+          </p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section panel reveal" id="gallery-section">
+    <div class="section-head">
+      <div>
+        <p class="section-kicker">Gallery</p>
+      </div>
+    </div>
+
+    <p class="misc-copy">
+      A few images kept here as a visual appendix to the notebook.
+    </p>
+
+    <div
+      id="gallery-container"
+      data-gallery-images="{{ '/assets/hero-slides/1.jpg' | relative_url }},{{ '/assets/hero-slides/2.jpg' | relative_url }},{{ '/assets/hero-slides/3.jpg' | relative_url }},{{ '/assets/hero-slides/4.jpg' | relative_url }},{{ '/assets/hero-slides/5.jpg' | relative_url }}"
+    >
+      <div id="gallery-viewport">
+        <div id="gallery" aria-live="polite"></div>
+      </div>
+
+      <button id="prev" class="gallery-control" type="button" aria-label="Show previous image">&lt;</button>
+      <button id="next" class="gallery-control" type="button" aria-label="Show next image">&gt;</button>
+    </div>
   </section>
 </main>

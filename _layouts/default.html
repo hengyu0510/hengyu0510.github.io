@@ -1,10 +1,19 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
+<!doctype html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
-  <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+  {% assign resolved_title = page.title %}
+  {% assign resolved_description = page.description | default: site.description %}
+  {% if page.path contains '2026-04-13-first-post' %}
+    {% assign resolved_title = 'My First Post' %}
+    {% assign resolved_description = 'The first post on my personal homepage.' %}
+  {% elsif page.path contains 'Packingstar-Framework' %}
+    {% assign resolved_title = 'PackingStar Framework' %}
+    {% assign resolved_description = 'Study note on game-theoretic reinforcement learning for kissing number search.' %}
+  {% endif %}
+  <title>{% if resolved_title %}{{ resolved_title }} - {% endif %}{{ site.title }}</title>
+  <meta name="description" content="{{ resolved_description | strip_html | normalize_whitespace }}">
   <link rel="stylesheet" href="{{ '/css/style.css' | relative_url }}">
   <script>
     window.MathJax = {
@@ -20,35 +29,27 @@
   </script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
 </head>
-<body>
-  <header class="site-header">
-    <div class="header-inner">
-      <a href="{{ '/' | relative_url }}" class="site-title">{{ site.title }}</a>
-      <button class="menu-toggle" aria-label="切换菜单" aria-expanded="false">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <line x1="3" y1="6" x2="21" y2="6"/>
-          <line x1="3" y1="12" x2="21" y2="12"/>
-          <line x1="3" y1="18" x2="21" y2="18"/>
-        </svg>
-      </button>
-      <nav>
-        <ul class="nav-links">
-          <li><a href="{{ '/' | relative_url }}" {% if page.url == '/' or page.url == '/index.html' %}class="active"{% endif %}>Posts</a></li>
-          <li><a href="{{ '/about.html' | relative_url }}" {% if page.url contains 'about' %}class="active"{% endif %}>About</a></li>
-        </ul>
-      </nav>
-    </div>
+<body class="{% unless page.hero %}no-hero{% endunless %}">
+  <div class="page-backdrop" aria-hidden="true">
+    <div class="page-noise"></div>
+  </div>
+
+  <header class="site-nav">
+    <a class="brand" href="{{ '/' | relative_url }}#top">Hengyu's homepage</a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="{{ '/' | relative_url }}#intro">Intro</a>
+      <a href="{{ '/' | relative_url }}#notes">Notes</a>
+      <a href="{{ '/' | relative_url }}#projects">Projects</a>
+      <a href="{{ '/about.html' | relative_url }}">About</a>
+    </nav>
   </header>
 
   {{ content }}
 
   <footer class="site-footer">
-    <p>&copy; 2026 Hengyu Wang | Tongji University</p>
-    <p>
-      <a href="https://github.com/why0510-493520" target="_blank" rel="noopener">GitHub</a>
-    </p>
+    <p>Last updated: June 2026. &copy; 2026 Hengyu Wang.</p>
   </footer>
 
-  <script src="{{ '/js/main.js' | relative_url }}"></script>
+  <script type="module" src="{{ '/js/app.js' | relative_url }}"></script>
 </body>
 </html>

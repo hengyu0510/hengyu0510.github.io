@@ -1,5 +1,5 @@
 title: "Hengyu's Home"
-description: "同济大学2023级 王衡宇的个人主页"
+description: "Personal homepage and notes by Hengyu Wang, an undergraduate student at Tongji University."
 url: "https://hengyu0510.github.io"
 baseurl: ""
 permalink: /posts/:year-:month-:day-:title/
@@ -10,3 +10,4 @@ kramdown:
 exclude:
   - README.md
   - LICENSE
+  - ruihong04.github.io-main/

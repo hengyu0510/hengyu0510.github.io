@@ -1,11 +1,16 @@
 ---
 layout: default
-title: 页面未找到
+title: Page Not Found
 permalink: /404.html
 ---
 
-<main class="main-content" style="text-align: center;">
-  <h1 class="page-title">404</h1>
-  <p style="color: var(--color-text-secondary); margin-bottom: var(--space-xl);">你访问的页面不存在。</p>
-  <a href="{{ '/' | relative_url }}">&larr; 返回首页</a>
+<main class="page-shell">
+  <section class="panel page-panel reveal">
+    <p class="section-kicker">404</p>
+    <h1 class="page-title">Page not found</h1>
+    <p class="page-lede">The page you requested does not exist.</p>
+    <p class="profile-links" style="margin-top: 24px;">
+      <a href="{{ '/' | relative_url }}">Back home</a>
+    </p>
+  </section>
 </main>
