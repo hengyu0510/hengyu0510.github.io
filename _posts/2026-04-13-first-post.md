@@ -2,6 +2,7 @@
 layout: post
 title: "我的第一篇文章"
 date: 2026-04-13
+column: daily
 description: "这是我的个人主页的第一篇文章。"
 ---
 

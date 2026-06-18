@@ -22,7 +22,16 @@ layout: default
     </div>
 
     <nav class="post-nav" aria-label="Post navigation">
-      <a href="{{ '/' | relative_url }}#notes" class="post-nav-link">Back to notes</a>
+      {% assign back_label = 'Back to notes' %}
+      {% assign back_anchor = '#notes' %}
+      {% if page.column == 'researches' %}
+        {% assign back_label = 'Back to researches' %}
+        {% assign back_anchor = '#researches' %}
+      {% elsif page.column == 'daily' %}
+        {% assign back_label = 'Back to daily' %}
+        {% assign back_anchor = '#daily' %}
+      {% endif %}
+      <a href="{{ '/' | relative_url }}{{ back_anchor }}" class="post-nav-link">{{ back_label }}</a>
     </nav>
   </article>
 </main>

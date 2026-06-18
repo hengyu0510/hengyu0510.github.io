@@ -15,9 +15,9 @@ hero: true
         <div class="hero-meta" aria-label="Introduction">
           <p class="hero-meta-badge">Tongji University '27</p>
           <ul class="hero-tags hero-tags-compact" aria-label="Interests">
-            <li>Mathematics</li>
-            <li>AI Agents</li>
-            <li>Learning notes</li>
+            <li>Notes</li>
+            <li>Researches</li>
+            <li>Daily</li>
           </ul>
         </div>
       </div>
@@ -46,12 +46,11 @@ hero: true
 
         <p>
           Hello, I'm Hengyu Wang, an undergraduate student at Tongji University.
-          This site is my working notebook for mathematics, AI, reading, and projects.
+          This site is organized around learning notes, research work, and daily records.
         </p>
         <p>
-          I use this homepage to collect study notes, project writeups, and small
-          reflections from campus life. The current focus is building a cleaner
-          research-style archive around topics I am learning in public.
+          I use this homepage to collect what I am learning, what I am building,
+          and small reflections from campus life.
         </p>
 
         <p class="profile-links">
@@ -60,6 +59,24 @@ hero: true
           <a href="https://www.xiaohongshu.com/user/profile/62aa8c18000000001b0255d7" target="_blank" rel="noreferrer">RedNote</a>
           <a href="{{ '/about.html' | relative_url }}">About</a>
         </p>
+
+        <div class="column-overview" aria-label="Site columns">
+          <a class="column-card" href="#notes">
+            <span class="column-label">01</span>
+            <strong>Notes</strong>
+            <span>Learning notes on mathematics, AI, reading, and tools.</span>
+          </a>
+          <a class="column-card" href="#researches">
+            <span class="column-label">02</span>
+            <strong>Researches</strong>
+            <span>Research writeups, paper notes, and project results.</span>
+          </a>
+          <a class="column-card" href="#daily">
+            <span class="column-label">03</span>
+            <strong>Daily</strong>
+            <span>Campus life, personal records, and visual moments.</span>
+          </a>
+        </div>
       </div>
 
       <aside class="profile-side">
@@ -74,24 +91,20 @@ hero: true
     <div class="section-head">
       <div>
         <p class="section-kicker">Notes</p>
+        <p class="section-note">Learning notes and study records.</p>
       </div>
     </div>
 
     <div class="paper-list">
-      {% for post in site.posts %}
+      {% assign note_posts = site.posts | where: 'column', 'notes' %}
+      {% for post in note_posts %}
       {% assign note_title = post.title %}
       {% assign note_excerpt = post.excerpt | strip_html | normalize_whitespace | truncate: 180 %}
-      {% if post.path contains '2026-04-13-first-post' %}
-        {% assign note_title = 'My First Post' %}
-        {% assign note_excerpt = 'A short welcome note for the personal homepage and future learning records.' %}
-      {% elsif post.path contains 'Packingstar-Framework' %}
-        {% assign note_title = 'PackingStar Framework' %}
-        {% assign note_excerpt = 'A study note on game-theoretic reinforcement learning for kissing number search.' %}
-      {% elsif post.path contains 'From-Adam-to-Muon' %}
+      {% if post.path contains 'From-Adam-to-Muon' %}
         {% assign note_title = 'From Adam to Muon' %}
         {% assign note_excerpt = 'A short optimizer note starting from Adam and Muon.' %}
       {% endif %}
-      <article class="note-card paper-card{% if forloop.first %} paper-card-highlight{% endif %}">
+      <article class="note-card paper-card paper-card-highlight">
         <time class="note-date" datetime="{{ post.date | date: '%Y-%m-%d' }}">
           {{ post.date | date: '%Y.%m' }}
         </time>
@@ -104,70 +117,120 @@ hero: true
         </div>
       </article>
       {% endfor %}
+      {% if note_posts.size == 0 %}
+      <p class="column-empty">No notes yet.</p>
+      {% endif %}
     </div>
   </section>
 
-  <section class="section panel reveal" id="projects">
+  <section class="section panel reveal" id="researches">
     <div class="section-head">
       <div>
-        <p class="section-kicker">Projects</p>
+        <p class="section-kicker">Researches</p>
+        <p class="section-note">Research results, project writeups, and paper reading records.</p>
       </div>
     </div>
 
     <div class="paper-list">
-      {% assign packingstar_url = '/' %}
-      {% for post in site.posts %}
-        {% if post.path contains 'Packingstar-Framework' %}
-          {% assign packingstar_url = post.url %}
-        {% endif %}
-      {% endfor %}
-      <article class="paper-card paper-card-highlight">
+      {% assign research_posts = site.posts | where: 'column', 'researches' %}
+      {% for post in research_posts %}
+      {% assign research_title = post.title %}
+      {% assign research_excerpt = post.excerpt | strip_html | normalize_whitespace | truncate: 180 %}
+      {% if post.path contains 'Packingstar-Framework' %}
+        {% assign research_title = 'PackingStar Framework' %}
+        {% assign research_excerpt = 'A study note on game-theoretic reinforcement learning for kissing number search.' %}
+      {% endif %}
+      {% assign is_featured_research = false %}
+      {% if post.path contains 'Packingstar-Framework' %}
+        {% assign is_featured_research = true %}
+      {% endif %}
+      <article class="{% if is_featured_research %}paper-card paper-card-highlight{% else %}note-card paper-card{% endif %}">
+        {% if is_featured_research %}
         <div class="paper-media">
           <img src="{{ '/assets/images/Framework.png' | relative_url }}" alt="PackingStar framework diagram">
         </div>
+        {% else %}
+        <time class="note-date" datetime="{{ post.date | date: '%Y-%m-%d' }}">
+          {{ post.date | date: '%Y.%m' }}
+        </time>
+        {% endif %}
         <div class="paper-body">
           <h3 class="paper-title">
-            <a href="{{ packingstar_url | relative_url }}">
-              PackingStar Framework
-            </a>
+            <a href="{{ post.url | relative_url }}">{{ research_title }}</a>
           </h3>
-          <p class="paper-authors">
-            A study note on game-theoretic reinforcement learning for kissing number search.
-          </p>
+          <p class="paper-authors">{{ research_excerpt }}</p>
           <p class="paper-links">
-            <a href="{{ packingstar_url | relative_url }}">Writeup</a>
+            <a href="{{ post.url | relative_url }}">Writeup</a>
+            {% if is_featured_research %}
             <span>/</span>
             <a href="https://arxiv.org/html/2511.13391v1" target="_blank" rel="noreferrer">Paper</a>
+            {% endif %}
           </p>
           <p class="paper-venue">
             <em>Mathematics, AI, reinforcement learning</em>
           </p>
         </div>
       </article>
+      {% endfor %}
+      {% if research_posts.size == 0 %}
+      <p class="column-empty">No research records yet.</p>
+      {% endif %}
     </div>
   </section>
 
-  <section class="section panel reveal" id="gallery-section">
+  <section class="section panel reveal" id="daily">
     <div class="section-head">
       <div>
-        <p class="section-kicker">Gallery</p>
+        <p class="section-kicker">Daily</p>
+        <p class="section-note">Daily records and visual moments.</p>
       </div>
     </div>
 
-    <p class="misc-copy">
-      A few images kept here as a visual appendix to the notebook.
-    </p>
-
-    <div
-      id="gallery-container"
-      data-gallery-images="{{ '/assets/hero-slides/1.jpg' | relative_url }},{{ '/assets/hero-slides/2.jpg' | relative_url }},{{ '/assets/hero-slides/3.jpg' | relative_url }},{{ '/assets/hero-slides/4.jpg' | relative_url }},{{ '/assets/hero-slides/5.jpg' | relative_url }}"
-    >
-      <div id="gallery-viewport">
-        <div id="gallery" aria-live="polite"></div>
+    <div class="daily-layout">
+      <div class="paper-list">
+        {% assign daily_posts = site.posts | where: 'column', 'daily' %}
+        {% for post in daily_posts %}
+        {% assign daily_title = post.title %}
+        {% assign daily_excerpt = post.excerpt | strip_html | normalize_whitespace | truncate: 180 %}
+        {% if post.path contains '2026-04-13-first-post' %}
+          {% assign daily_title = 'My First Post' %}
+          {% assign daily_excerpt = 'A short welcome note for the personal homepage and future learning records.' %}
+        {% endif %}
+        <article class="note-card paper-card">
+          <time class="note-date" datetime="{{ post.date | date: '%Y-%m-%d' }}">
+            {{ post.date | date: '%Y.%m' }}
+          </time>
+          <div class="paper-body">
+            <h3 class="note-title">
+              <a href="{{ post.url | relative_url }}">{{ daily_title }}</a>
+            </h3>
+            <p class="note-excerpt">{{ daily_excerpt }}</p>
+            <a class="note-link" href="{{ post.url | relative_url }}">Read daily</a>
+          </div>
+        </article>
+        {% endfor %}
+        {% if daily_posts.size == 0 %}
+        <p class="column-empty">No daily records yet.</p>
+        {% endif %}
       </div>
 
-      <button id="prev" class="gallery-control" type="button" aria-label="Show previous image">&lt;</button>
-      <button id="next" class="gallery-control" type="button" aria-label="Show next image">&gt;</button>
+      <div class="daily-gallery">
+        <p class="misc-copy">
+          A few images kept here as a visual appendix to the notebook.
+        </p>
+
+        <div
+          id="gallery-container"
+          data-gallery-images="{{ '/assets/hero-slides/1.jpg' | relative_url }},{{ '/assets/hero-slides/2.jpg' | relative_url }},{{ '/assets/hero-slides/3.jpg' | relative_url }},{{ '/assets/hero-slides/4.jpg' | relative_url }},{{ '/assets/hero-slides/5.jpg' | relative_url }}"
+        >
+          <div id="gallery-viewport">
+            <div id="gallery" aria-live="polite"></div>
+          </div>
+
+          <button id="prev" class="gallery-control" type="button" aria-label="Show previous image">&lt;</button>
+          <button id="next" class="gallery-control" type="button" aria-label="Show next image">&gt;</button>
+        </div>
+      </div>
     </div>
   </section>
 </main>
