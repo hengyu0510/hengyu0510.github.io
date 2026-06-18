@@ -2,7 +2,7 @@
 layout: post
 title: "Packingstar Framework"
 date: 2026-04-13
-column: researches
+column: notes
 description: "复旦大学Packingstar相关架构的笔记"
 ---
 

@@ -103,6 +103,9 @@ hero: true
       {% if post.path contains 'From-Adam-to-Muon' %}
         {% assign note_title = 'From Adam to Muon' %}
         {% assign note_excerpt = 'A short optimizer note starting from Adam and Muon.' %}
+      {% elsif post.path contains 'Packingstar-Framework' %}
+        {% assign note_title = 'PackingStar Framework' %}
+        {% assign note_excerpt = 'A study note on game-theoretic reinforcement learning for kissing number search.' %}
       {% endif %}
       <article class="note-card paper-card paper-card-highlight">
         <time class="note-date" datetime="{{ post.date | date: '%Y-%m-%d' }}">
@@ -136,24 +139,10 @@ hero: true
       {% for post in research_posts %}
       {% assign research_title = post.title %}
       {% assign research_excerpt = post.excerpt | strip_html | normalize_whitespace | truncate: 180 %}
-      {% if post.path contains 'Packingstar-Framework' %}
-        {% assign research_title = 'PackingStar Framework' %}
-        {% assign research_excerpt = 'A study note on game-theoretic reinforcement learning for kissing number search.' %}
-      {% endif %}
-      {% assign is_featured_research = false %}
-      {% if post.path contains 'Packingstar-Framework' %}
-        {% assign is_featured_research = true %}
-      {% endif %}
-      <article class="{% if is_featured_research %}paper-card paper-card-highlight{% else %}note-card paper-card{% endif %}">
-        {% if is_featured_research %}
-        <div class="paper-media">
-          <img src="{{ '/assets/images/Framework.png' | relative_url }}" alt="PackingStar framework diagram">
-        </div>
-        {% else %}
+      <article class="note-card paper-card">
         <time class="note-date" datetime="{{ post.date | date: '%Y-%m-%d' }}">
           {{ post.date | date: '%Y.%m' }}
         </time>
-        {% endif %}
         <div class="paper-body">
           <h3 class="paper-title">
             <a href="{{ post.url | relative_url }}">{{ research_title }}</a>
@@ -161,10 +150,6 @@ hero: true
           <p class="paper-authors">{{ research_excerpt }}</p>
           <p class="paper-links">
             <a href="{{ post.url | relative_url }}">Writeup</a>
-            {% if is_featured_research %}
-            <span>/</span>
-            <a href="https://arxiv.org/html/2511.13391v1" target="_blank" rel="noreferrer">Paper</a>
-            {% endif %}
           </p>
           <p class="paper-venue">
             <em>Mathematics, AI, reinforcement learning</em>
