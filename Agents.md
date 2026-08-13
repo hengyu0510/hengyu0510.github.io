@@ -87,7 +87,7 @@ description: "文章描述"
 
 ## 前端结构
 
-`js/app.js` 是浏览器端入口，负责：
+`js/app.js` 是旧版交互入口，负责：
 
 - 如果页面提供 `#scene-canvas`，初始化 hero 粒子场景；当前首页使用学术主页布局，不显示 hero canvas。
 - 初始化全局点击烟花效果。
@@ -95,7 +95,9 @@ description: "文章描述"
 - 绑定页面滚动按钮。
 - 绑定 `.reveal` 入场动画。
 - 处理文章摘要折叠/展开。
-- 初始化首页 gallery 轮播。
+- 初始化旧版 gallery 轮播。
+
+当前学术模板首页只加载轻量的 `js/gallery.js` 处理 Daily 图片轮播，不加载 Three.js、hero 或烟花模块；这样首页在不支持 WebGL 的浏览器中也能正常显示。`js/app.js` 和 `js/hero/*` 仅作为旧版交互代码保留，当前页面不加载。
 
 `js/hero/config.js` 集中管理 hero 效果参数，包括移动端断点、相机、粒子数量、图片 atlas、交互强度和滚动范围。调整 hero 视觉效果时优先改这里，再考虑改 `ParticleHero.js` 或 shader。
 
