@@ -1,161 +1,88 @@
 ---
 layout: default
-hero: true
+title: Hengyu Wang
+description: "Hengyu Wang's personal academic homepage, notes, and research."
 ---
 
-<section class="hero-shell" id="top">
-  <div class="hero-sticky">
-    <canvas id="scene-canvas" aria-hidden="true"></canvas>
-    <div class="hero-copy-scrim"></div>
+<main class="academic-shell">
+  <section class="academic-intro" id="intro">
+    <div class="intro-copy">
+      <p class="intro-name">Hengyu Wang · 王衡宇</p>
+      <h1>Mathematics, AI, and curious experiments.</h1>
+      <p>
+        I am an undergraduate student at Tongji University, studying mathematics
+        and exploring the ideas that connect optimization, artificial intelligence,
+        and scientific computing.
+      </p>
+      <p>
+        This homepage collects my research, learning notes, and small records from
+        campus life. It is a living notebook rather than a finished résumé.
+      </p>
 
-    <div class="hero-layout">
-      <div class="hero-copy">
-        <p class="hero-greeting">Hi! I'm</p>
-        <h1 class="hero-title">Hengyu</h1>
-        <div class="hero-meta" aria-label="Introduction">
-          <p class="hero-meta-badge">Tongji University '27</p>
-          <ul class="hero-tags hero-tags-compact" aria-label="Interests">
-            <li>Notes</li>
-            <li>Researches</li>
-            <li>Daily</li>
-          </ul>
-        </div>
-      </div>
+      <p class="profile-links" aria-label="Contact and profile links">
+        <a href="mailto:why0510@tongji.edu.cn">Email</a>
+        <a href="https://github.com/hengyu0510" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="https://www.xiaohongshu.com/user/profile/62aa8c18000000001b0255d7" target="_blank" rel="noreferrer">RedNote</a>
+        <a href="{{ '/about.html' | relative_url }}">About</a>
+      </p>
     </div>
 
-    <button
-      class="scroll-cue"
-      type="button"
-      data-scroll-target="#intro"
-      aria-label="Scroll to content"
-    >
-      <span>Scroll</span>
-      <span class="scroll-line"></span>
-    </button>
-  </div>
-</section>
-
-<main class="content-shell">
-  <section class="section panel reveal" id="intro">
-    <div class="profile-grid">
-      <div class="profile-copy">
-        <div class="profile-heading">
-          <p class="profile-name">Hengyu Wang</p>
-          <p class="profile-email">why0510@tongji.edu.cn</p>
-        </div>
-
-        <p>
-          Hello, I'm Hengyu Wang, an undergraduate student at Tongji University.
-          This site is organized around learning notes, research work, and daily records.
-        </p>
-        <p>
-          I use this homepage to collect what I am learning, what I am building,
-          and small reflections from campus life.
-        </p>
-
-        <p class="profile-links">
-          <a href="mailto:why0510@tongji.edu.cn">Email</a>
-          <a href="https://github.com/hengyu0510" target="_blank" rel="noreferrer">Github</a>
-          <a href="https://www.xiaohongshu.com/user/profile/62aa8c18000000001b0255d7" target="_blank" rel="noreferrer">RedNote</a>
-          <a href="{{ '/about.html' | relative_url }}">About</a>
-        </p>
-
-        <div class="column-overview" aria-label="Site columns">
-          <a class="column-card" href="#notes">
-            <span class="column-label">01</span>
-            <strong>Notes</strong>
-            <span>Learning notes on mathematics, AI, reading, and tools.</span>
-          </a>
-          <a class="column-card" href="#researches">
-            <span class="column-label">02</span>
-            <strong>Researches</strong>
-            <span>Research writeups, paper notes, and project results.</span>
-          </a>
-          <a class="column-card" href="#daily">
-            <span class="column-label">03</span>
-            <strong>Daily</strong>
-            <span>Campus life, personal records, and visual moments.</span>
-          </a>
-        </div>
-      </div>
-
-      <aside class="profile-side">
-        <img class="profile-portrait" src="{{ '/assets/images/profile.jpg' | relative_url }}" alt="Portrait of Hengyu Wang">
-      </aside>
-    </div>
+    <aside class="profile-side">
+      <img class="profile-portrait" src="{{ '/assets/images/profile.jpg' | relative_url }}" alt="Portrait of Hengyu Wang">
+      <p class="portrait-caption">Tongji University · Class of 2027</p>
+    </aside>
   </section>
 
-  <section class="section panel reveal" id="notes">
-    <div class="section-head">
-      <div>
-        <p class="section-kicker">Notes</p>
-        <p class="section-note">Learning notes and study records.</p>
-      </div>
+  <section class="academic-section" id="news">
+    <div class="section-heading-row">
+      <h2>News</h2>
+      <span class="section-rule" aria-hidden="true"></span>
     </div>
-
-    <div class="paper-list">
-      {% assign note_posts = site.posts | where: 'column', 'notes' %}
-      {% for post in note_posts %}
-      {% assign note_title = post.title %}
-      {% assign note_excerpt = post.excerpt | strip_html | normalize_whitespace | truncate: 180 %}
-      {% if post.path contains 'From-Adam-to-Muon' %}
-        {% assign note_title = 'From Adam to Muon' %}
-        {% assign note_excerpt = 'A short optimizer note starting from Adam and Muon.' %}
-      {% elsif post.path contains 'Packingstar-Framework' %}
-        {% assign note_title = 'PackingStar Framework' %}
-        {% assign note_excerpt = 'A study note on game-theoretic reinforcement learning for kissing number search.' %}
-      {% endif %}
-      <article class="note-card paper-card paper-card-highlight">
-        <time class="note-date" datetime="{{ post.date | date: '%Y-%m-%d' }}">
-          {{ post.date | date: '%Y.%m' }}
-        </time>
-        <div class="paper-body">
-          <h3 class="note-title">
-            <a href="{{ post.url | relative_url }}">{{ note_title }}</a>
-          </h3>
-          <p class="note-excerpt">{{ note_excerpt }}</p>
-          <a class="note-link" href="{{ post.url | relative_url }}">Read note</a>
-        </div>
-      </article>
+    <div class="news-scroller" role="region" aria-label="News and updates">
+      {% for post in site.posts limit: 8 %}
+      <p class="news-item">
+        <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: '%Y/%m/%d' }}</time>
+        <span>—</span>
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      </p>
       {% endfor %}
-      {% if note_posts.size == 0 %}
-      <p class="column-empty">No notes yet.</p>
-      {% endif %}
     </div>
   </section>
 
-  <section class="section panel reveal" id="researches">
-    <div class="section-head">
-      <div>
-        <p class="section-kicker">Researches</p>
-        <p class="section-note">Research results, project writeups, and paper reading records.</p>
-      </div>
+  <section class="academic-section" id="researches">
+    <div class="section-heading-row">
+      <h2>Research <span>(Selected Publications)</span></h2>
+      <span class="section-rule" aria-hidden="true"></span>
     </div>
+    <p class="section-lede">
+      I am interested in optimization, mathematical structure, and learning systems
+      that can help us search through difficult scientific problems.
+    </p>
 
-    <div class="paper-list">
+    <div class="publication-list">
       {% assign research_posts = site.posts | where: 'column', 'researches' %}
       {% for post in research_posts %}
-      {% assign research_title = post.title %}
-      {% assign research_excerpt = post.excerpt | strip_html | normalize_whitespace | truncate: 180 %}
+      {% assign research_excerpt = post.excerpt | strip_html | normalize_whitespace | truncate: 230 %}
       {% assign research_authors = post.authors | default: research_excerpt %}
-      <article class="note-card paper-card">
-        <time class="note-date" datetime="{{ post.date | date: '%Y-%m-%d' }}">
-          {{ post.date | date: '%Y.%m' }}
-        </time>
-        <div class="paper-body">
-          <h3 class="paper-title">
-            <a href="{{ post.url | relative_url }}">{{ research_title }}</a>
+      <article class="publication-row">
+        <div class="publication-year" aria-label="Publication date">
+          <span>{{ post.date | date: '%Y' }}</span>
+          <small>{{ post.date | date: '%b' }}</small>
+        </div>
+        <div class="publication-body">
+          <h3>
+            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
           </h3>
-          <p class="paper-authors">{{ research_authors | replace: 'Hengyu Wang', '<strong>Hengyu Wang</strong>' }}</p>
-          <p class="paper-links">
+          <p class="publication-authors">{{ research_authors | replace: 'Hengyu Wang', '<strong>Hengyu Wang</strong>' }}</p>
+          <p class="publication-venue"><em>{{ post.venue | default: 'Research note' }}</em></p>
+          <p class="publication-links">
             {% if post.publication_url %}
-            <a href="{{ post.publication_url }}" target="_blank" rel="noreferrer">arXiv</a>
+            <a href="{{ post.publication_url }}" target="_blank" rel="noreferrer">Paper</a>
+            <span>/</span>
             {% endif %}
             <a href="{{ post.url | relative_url }}">Writeup</a>
           </p>
-          <p class="paper-venue">
-            <em>{{ post.venue | default: 'Mathematics, AI, reinforcement learning' }}</em>
-          </p>
+          <p class="publication-abstract">{{ research_excerpt }}</p>
         </div>
       </article>
       {% endfor %}
@@ -165,35 +92,47 @@ hero: true
     </div>
   </section>
 
-  <section class="section panel reveal" id="daily">
-    <div class="section-head">
-      <div>
-        <p class="section-kicker">Daily</p>
-        <p class="section-note">Daily records and visual moments.</p>
-      </div>
+  <section class="academic-section" id="notes">
+    <div class="section-heading-row">
+      <h2>Notes</h2>
+      <span class="section-rule" aria-hidden="true"></span>
     </div>
+    <div class="compact-list">
+      {% assign note_posts = site.posts | where: 'column', 'notes' %}
+      {% for post in note_posts %}
+      {% assign note_title = post.title %}
+      {% if post.path contains 'From-Adam-to-Muon' %}
+        {% assign note_title = 'From Adam to Muon' %}
+      {% elsif post.path contains 'Packingstar-Framework' %}
+        {% assign note_title = 'PackingStar Framework' %}
+      {% endif %}
+      <article class="compact-row">
+        <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: '%Y.%m' }}</time>
+        <a href="{{ post.url | relative_url }}">{{ note_title }}</a>
+      </article>
+      {% endfor %}
+      {% if note_posts.size == 0 %}
+      <p class="column-empty">No notes yet.</p>
+      {% endif %}
+    </div>
+  </section>
 
+  <section class="academic-section" id="daily">
+    <div class="section-heading-row">
+      <h2>Daily</h2>
+      <span class="section-rule" aria-hidden="true"></span>
+    </div>
     <div class="daily-layout">
-      <div class="paper-list">
+      <div class="compact-list">
         {% assign daily_posts = site.posts | where: 'column', 'daily' %}
         {% for post in daily_posts %}
         {% assign daily_title = post.title %}
-        {% assign daily_excerpt = post.excerpt | strip_html | normalize_whitespace | truncate: 180 %}
         {% if post.path contains '2026-04-13-first-post' %}
           {% assign daily_title = 'My First Post' %}
-          {% assign daily_excerpt = 'A short welcome note for the personal homepage and future learning records.' %}
         {% endif %}
-        <article class="note-card paper-card">
-          <time class="note-date" datetime="{{ post.date | date: '%Y-%m-%d' }}">
-            {{ post.date | date: '%Y.%m' }}
-          </time>
-          <div class="paper-body">
-            <h3 class="note-title">
-              <a href="{{ post.url | relative_url }}">{{ daily_title }}</a>
-            </h3>
-            <p class="note-excerpt">{{ daily_excerpt }}</p>
-            <a class="note-link" href="{{ post.url | relative_url }}">Read daily</a>
-          </div>
+        <article class="compact-row">
+          <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: '%Y.%m' }}</time>
+          <a href="{{ post.url | relative_url }}">{{ daily_title }}</a>
         </article>
         {% endfor %}
         {% if daily_posts.size == 0 %}
@@ -202,10 +141,7 @@ hero: true
       </div>
 
       <div class="daily-gallery">
-        <p class="misc-copy">
-          A few images kept here as a visual appendix to the notebook.
-        </p>
-
+        <p class="gallery-caption">A few images kept as a visual appendix to the notebook.</p>
         <div
           id="gallery-container"
           data-gallery-images="{{ '/assets/hero-slides/1.jpg' | relative_url }},{{ '/assets/hero-slides/2.jpg' | relative_url }},{{ '/assets/hero-slides/3.jpg' | relative_url }},{{ '/assets/hero-slides/4.jpg' | relative_url }},{{ '/assets/hero-slides/5.jpg' | relative_url }}"
@@ -213,7 +149,6 @@ hero: true
           <div id="gallery-viewport">
             <div id="gallery" aria-live="polite"></div>
           </div>
-
           <button id="prev" class="gallery-control" type="button" aria-label="Show previous image">&lt;</button>
           <button id="next" class="gallery-control" type="button" aria-label="Show next image">&gt;</button>
         </div>
