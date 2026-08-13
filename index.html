@@ -137,6 +137,7 @@ hero: true
       {% for post in research_posts %}
       {% assign research_title = post.title %}
       {% assign research_excerpt = post.excerpt | strip_html | normalize_whitespace | truncate: 180 %}
+      {% assign research_authors = post.authors | default: research_excerpt %}
       <article class="note-card paper-card">
         <time class="note-date" datetime="{{ post.date | date: '%Y-%m-%d' }}">
           {{ post.date | date: '%Y.%m' }}
@@ -145,12 +146,15 @@ hero: true
           <h3 class="paper-title">
             <a href="{{ post.url | relative_url }}">{{ research_title }}</a>
           </h3>
-          <p class="paper-authors">{{ research_excerpt }}</p>
+          <p class="paper-authors">{{ research_authors | replace: 'Hengyu Wang', '<strong>Hengyu Wang</strong>' }}</p>
           <p class="paper-links">
+            {% if post.publication_url %}
+            <a href="{{ post.publication_url }}" target="_blank" rel="noreferrer">arXiv</a>
+            {% endif %}
             <a href="{{ post.url | relative_url }}">Writeup</a>
           </p>
           <p class="paper-venue">
-            <em>Mathematics, AI, reinforcement learning</em>
+            <em>{{ post.venue | default: 'Mathematics, AI, reinforcement learning' }}</em>
           </p>
         </div>
       </article>
