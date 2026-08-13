@@ -97,12 +97,6 @@ description: "Personal academic homepage of Hengyu Wang, an undergraduate studen
               {% assign research_excerpt = post.excerpt | strip_html | normalize_whitespace | truncate: 320 %}
               {% assign research_authors = post.authors | default: research_excerpt %}
               <tr class="publication-row">
-                <td class="publication-media-cell">
-                  <div class="publication-placeholder" aria-hidden="true">
-                    <span>MVI</span>
-                    <small>{{ post.date | date: '%Y' }}</small>
-                  </div>
-                </td>
                 <td class="publication-copy-cell">
                   <a href="{{ post.publication_url | default: post.url }}" {% if post.publication_url %}target="_blank" rel="noreferrer"{% endif %}>
                     <papertitle>{{ post.title }}</papertitle>
