@@ -8,7 +8,7 @@
 
 核心内容：
 
-- 首页：`index.html`（窄版学术主页风格，包含简介、News、Selected Publications、Notes 和 Daily）
+- 首页：`index.html`（直接采用 YongchaoChen 式窄版学术主页模板，包含简介、News、Academic Interests、Selected Publications、Notes 和 Daily）
 - 关于页：`about.html`
 - 404 页：`404.html`
 - 文章：`_posts/*.md`
@@ -109,7 +109,7 @@ description: "文章描述"
 
 ## 样式约定
 
-样式集中在 `css/style.css`。当前首页视觉参考经典学术个人主页：白色背景、Lato 字体、蓝色链接、窄版居中内容和轻量分隔线；文章页和关于页沿用同一套排版。修改样式时：
+样式集中在 `css/style.css`。当前首页直接采用经典学术个人主页模板：白色背景、Lato 字体、`max-width: 800px` 的居中 table 排版、News 滚动区和论文条目；文章页和关于页沿用同一套排版。修改样式时：
 
 - 优先复用 `:root` 里的纸张、文字、辅助文字、分隔线和链接颜色变量。
 - 保持移动端断点：`720px`、`480px`；旧 hero 模块仍使用 `820px` 作为内部粒子配置断点。

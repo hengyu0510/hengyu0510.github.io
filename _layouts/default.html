@@ -29,7 +29,8 @@
   </script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
 </head>
-<body class="{% unless page.hero %}no-hero{% endunless %}">
+<body class="{% unless page.hero %}no-hero{% endunless %}{% if page.homepage_template %} reference-homepage{% endif %}">
+  {% unless page.homepage_template %}
   <div class="page-backdrop" aria-hidden="true">
     <div class="page-noise"></div>
   </div>
@@ -44,12 +45,15 @@
       <a href="{{ '/about.html' | relative_url }}">About</a>
     </nav>
   </header>
+  {% endunless %}
 
   {{ content }}
 
+  {% unless page.homepage_template %}
   <footer class="site-footer">
     <p>Last updated: August 2026. &copy; 2026 Hengyu Wang.</p>
   </footer>
+  {% endunless %}
 
   <script type="module" src="{{ '/js/app.js' | relative_url }}"></script>
 </body>
