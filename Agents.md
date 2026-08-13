@@ -8,7 +8,7 @@
 
 核心内容：
 
-- 首页：`index.html`（直接采用 YongchaoChen 式窄版学术主页模板，包含简介、News、Academic Interests、Selected Publications、Notes 和 Daily）
+- 首页：`index.html`（直接采用 YongchaoChen 式窄版学术主页模板，包含简介、News、Selected Publications、Notes 和 Daily）
 - 关于页：`about.html`
 - 404 页：`404.html`
 - 文章：`_posts/*.md`

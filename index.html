@@ -63,24 +63,6 @@ description: "Personal academic homepage of Hengyu Wang, an undergraduate studen
             <tbody>
               <tr>
                 <td>
-                  <heading>Academic Interests</heading>
-                  <p>
-                    Optimization, monotone variational inequalities, reinforcement learning,
-                    mathematical problem solving, and AI for science.
-                  </p>
-                  <p>
-                    I enjoy turning mathematical ideas into experiments, writing clear notes,
-                    and learning from the gap between a proof and a working system.
-                  </p>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-
-          <table class="reference-table section-table" role="presentation">
-            <tbody>
-              <tr>
-                <td>
                   <heading>Research (Selected Publications)</heading>
                   <p>
                     Research results, project writeups, and paper reading records.
@@ -94,8 +76,7 @@ description: "Personal academic homepage of Hengyu Wang, an undergraduate studen
             <tbody>
               {% assign research_posts = site.posts | where: 'column', 'researches' %}
               {% for post in research_posts %}
-              {% assign research_excerpt = post.excerpt | strip_html | normalize_whitespace | truncate: 320 %}
-              {% assign research_authors = post.authors | default: research_excerpt %}
+              {% assign research_authors = post.authors | default: 'Hengyu Wang' %}
               <tr class="publication-row">
                 <td class="publication-copy-cell">
                   <a href="{{ post.publication_url | default: post.url }}" {% if post.publication_url %}target="_blank" rel="noreferrer"{% endif %}>
@@ -108,7 +89,6 @@ description: "Personal academic homepage of Hengyu Wang, an undergraduate studen
                   <br>
                   {% if post.publication_url %}<a href="{{ post.publication_url }}" target="_blank" rel="noreferrer">Paper</a> &nbsp;/&nbsp;{% endif %}
                   <a href="{{ post.url | relative_url }}">Writeup</a>
-                  <p>{{ research_excerpt }}</p>
                 </td>
               </tr>
               {% endfor %}

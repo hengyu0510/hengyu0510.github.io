@@ -172,7 +172,6 @@ img { max-width: 100%; }
 .publication-table td { padding: 20px 0; vertical-align: top; }
 .publication-row + .publication-row { border-top: 1px solid #eee; }
 .publication-copy-cell { width: 100%; }
-.publication-copy-cell p { margin: 12px 0 0; color: #666; line-height: 1.58; }
 .list-row { margin: 0 0 10px; }
 .list-date { display: inline-block; min-width: 105px; color: #777; font-size: .94em; font-variant-numeric: tabular-nums; }
 .gallery-note { margin: 22px 0 12px; color: #666; }
