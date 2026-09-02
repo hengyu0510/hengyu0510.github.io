@@ -34,7 +34,9 @@ description: "Personal academic homepage of Hengyu Wang, an undergraduate studen
                   </p>
                 </td>
                 <td class="intro-photo-cell">
-                  <img class="profile-photo" src="{{ '/assets/images/profile.jpg' | relative_url }}" alt="Portrait of Hengyu Wang">
+                  <a href="{{ '/assets/images/profile.jpg' | relative_url }}">
+                    <img class="profile-photo" src="{{ '/assets/images/profile.jpg' | relative_url }}" alt="Portrait of Hengyu Wang">
+                  </a>
                 </td>
               </tr>
             </tbody>
@@ -75,8 +77,15 @@ description: "Personal academic homepage of Hengyu Wang, an undergraduate studen
           <table class="reference-table publication-table" role="presentation">
             <tbody>
               {% assign research_posts = site.posts | where: 'column', 'researches' %}
+              {% assign last_theme = '' %}
               {% for post in research_posts %}
               {% assign research_authors = post.authors | default: 'Hengyu Wang' %}
+              {% if post.theme and post.theme != last_theme %}
+              <tr class="research-theme-row">
+                <td colspan="2"><h2 class="research-theme">{{ post.theme }}</h2></td>
+              </tr>
+              {% assign last_theme = post.theme %}
+              {% endif %}
               <tr class="publication-row">
                 {% if post.thumbnail %}
                 <td class="publication-thumb-cell">
