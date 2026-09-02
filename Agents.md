@@ -74,6 +74,27 @@ description: "文章描述"
 - `researches`：研究成果、项目记录、论文阅读，对应首页 `Researches` 栏。
 - `daily`：日常记录，对应首页 `Daily` 栏。
 
+`researches` 栏的文章可选用以下 front matter 字段，让首页论文条目采用 Yongchao 原版式排版：
+
+```yaml
+---
+layout: post
+title: "论文标题"
+date: YYYY-MM-DD
+column: researches
+description: "一句话摘要，会显示在论文条目下方"
+authors: "First Author, Hengyu Wang, Last Author"  # 其中 Hengyu Wang 自动加粗
+venue: "会议/期刊/arXiv 信息"
+publication_url: "https://arxiv.org/abs/xxxx"       # 有则标题与 Paper 链接指向它
+thumbnail: "/assets/images/xxx.jpg"                 # 可选：160px 缩略图（真实图片才填，无图不显示占位）
+thumbnail_hover: "/assets/images/xxx.mp4"           # 可选：hover 时淡入的视频，需要同时有 thumbnail
+code_url: "https://github.com/..."                  # 可选：Code 链接
+project_url: "https://..."                          # 可选：Project Page 链接
+---
+```
+
+所有新增字段都可省略：不填 `thumbnail` 时论文条目回退为全宽文字（不显示占位配图）；`code_url`/`project_url` 不填则不显示对应链接。
+
 站点启用了 MathJax，数学内容可使用 `$...$`、`$$...$$`、`\(...\)`、`\[...\]`。`_config.yml` 中使用 `kramdown` 和 `math_engine: mathjax`。
 
 写链接和图片路径时，优先使用 Jekyll 的 `relative_url`，例如：

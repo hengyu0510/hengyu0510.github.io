@@ -14,7 +14,7 @@ description: "Personal academic homepage of Hengyu Wang, an undergraduate studen
             <tbody>
               <tr>
                 <td class="intro-copy-cell">
-                  <p class="centered"><name>Hengyu Wang </name></p>
+                  <p class="centered"><name>Hengyu Wang</name></p>
                   <p>
                     I am an undergraduate student at
                     <a href="https://en.tongji.edu.cn/" target="_blank" rel="noreferrer">Tongji University</a>,
@@ -78,7 +78,21 @@ description: "Personal academic homepage of Hengyu Wang, an undergraduate studen
               {% for post in research_posts %}
               {% assign research_authors = post.authors | default: 'Hengyu Wang' %}
               <tr class="publication-row">
-                <td class="publication-copy-cell">
+                {% if post.thumbnail %}
+                <td class="publication-thumb-cell">
+                  <div class="one">
+                    {% if post.thumbnail_hover %}
+                    <div class="two">
+                      <video width="160" height="160" muted autoplay loop playsinline>
+                        <source src="{{ post.thumbnail_hover | relative_url }}" type="video/mp4">
+                      </video>
+                    </div>
+                    {% endif %}
+                    <img src="{{ post.thumbnail | relative_url }}" width="160" alt="{{ post.title | escape }} preview">
+                  </div>
+                </td>
+                {% endif %}
+                <td class="publication-copy-cell{% unless post.thumbnail %} publication-copy-cell--full{% endunless %}">
                   <a href="{{ post.publication_url | default: post.url }}" {% if post.publication_url %}target="_blank" rel="noreferrer"{% endif %}>
                     <papertitle>{{ post.title }}</papertitle>
                   </a>
@@ -88,7 +102,12 @@ description: "Personal academic homepage of Hengyu Wang, an undergraduate studen
                   <em>{{ post.venue | default: 'Research note' }}</em>
                   <br>
                   {% if post.publication_url %}<a href="{{ post.publication_url }}" target="_blank" rel="noreferrer">Paper</a> &nbsp;/&nbsp;{% endif %}
+                  {% if post.code_url %}<a href="{{ post.code_url }}" target="_blank" rel="noreferrer">Code</a> &nbsp;/&nbsp;{% endif %}
+                  {% if post.project_url %}<a href="{{ post.project_url }}" target="_blank" rel="noreferrer">Project Page</a> &nbsp;/&nbsp;{% endif %}
                   <a href="{{ post.url | relative_url }}">Writeup</a>
+                  {% if post.description %}
+                  <p class="publication-abstract">{{ post.description }}</p>
+                  {% endif %}
                 </td>
               </tr>
               {% endfor %}

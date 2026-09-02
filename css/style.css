@@ -172,6 +172,16 @@ img { max-width: 100%; }
 .publication-table td { padding: 20px 0; vertical-align: top; }
 .publication-row + .publication-row { border-top: 1px solid #eee; }
 .publication-copy-cell { width: 100%; }
+.publication-copy-cell--full { width: 100%; }
+/* Optional Yongchao-style thumbnail card. Rendered only when a post supplies a
+   real `thumbnail`; otherwise the copy cell spans full width (no placeholder). */
+.publication-thumb-cell { width: 180px; padding: 20px 22px 20px 0; vertical-align: top; }
+.publication-thumb-cell .one { width: 160px; height: 160px; }
+.publication-thumb-cell img { display: block; width: 160px; height: 160px; object-fit: cover; border: 1px solid #eee; }
+.publication-thumb-cell .two { width: 160px; height: 160px; opacity: 0; }
+.publication-thumb-cell .two video { display: block; width: 160px; height: 160px; object-fit: cover; border: 1px solid #eee; }
+.publication-row:hover .two { opacity: 1; }
+.publication-abstract { margin: 10px 0 0; color: #555; }
 .list-row { margin: 0 0 10px; }
 .list-date { display: inline-block; min-width: 105px; color: #777; font-size: .94em; font-variant-numeric: tabular-nums; }
 .gallery-note { margin: 22px 0 12px; color: #666; }
@@ -213,6 +223,7 @@ img { max-width: 100%; }
   .intro-copy-cell, .intro-photo-cell { display: block; width: 100%; padding: 26px 0 14px; }
   .intro-photo-cell { padding-top: 4px; }
   .profile-photo { width: 170px; }
+  .publication-thumb-cell { display: block; width: 100%; padding: 12px 0 0; }
   .publication-copy-cell { display: block; width: 100%; padding: 12px 0 !important; }
 }
 @media (max-width: 480px) {
