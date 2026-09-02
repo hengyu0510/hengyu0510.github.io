@@ -7,7 +7,7 @@ description: "A publication on accelerated Halpern iterations for smooth monoton
 authors: "Lesi Chen, Xinliang Zhang, Hengyu Wang, Chengchang Liu, Yongchao Chen, and Jingzhao Zhang"
 publication_url: "https://arxiv.org/abs/2608.08463"
 venue: "arXiv preprint · math.OC / cs.AI"
-theme: "Optimization and Variational Inequalities"
+theme: "Optimization"
 ---
 
 # Halpern Iteration Achieves $\tilde{\mathcal{O}}(\varepsilon^{-1/p})$ $p$th-Order Oracle Complexity for Monotone Variational Inequalities

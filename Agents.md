@@ -83,20 +83,18 @@ title: "论文标题"
 date: YYYY-MM-DD
 column: researches
 description: "一句话摘要，会显示在论文条目下方"
-authors: "First Author, Hengyu Wang, Last Author"  # 其中 Hengyu Wang 自动加粗
+authors: "First Author, Hengyu Wang, Last Author"  # 只列核心作者即可；其中 Hengyu Wang 自动加粗
 venue: "会议/期刊/arXiv 信息"
-publication_url: "https://arxiv.org/abs/xxxx"       # 有则标题与 Paper 链接指向它
+publication_url: "https://arxiv.org/abs/xxxx"       # 论文标题点击后跳转到该链接（新标签打开）
 theme: "研究主题"                                    # 可选：紫色分组小标题（同一 theme 的论文归为一组，仿原版）
 thumbnail: "/assets/images/xxx.jpg"                 # 可选：160px 缩略图（真实图片才填，无图不显示占位）
 thumbnail_hover: "/assets/images/xxx.mp4"           # 可选：hover 时淡入的视频，需要同时有 thumbnail
-code_url: "https://github.com/..."                  # 可选：Code 链接
-project_url: "https://..."                          # 可选：Project Page 链接
 ---
 ```
 
 `theme` 用于在 Selected Publications 里生成紫色主题小标题（对应原版 `<h2 style="color:purple">` 分组）。首页按发布日期倒序遍历 `researches` 文章，`theme` 发生变化时插入一个紫色小标题；相邻且 `theme` 相同的论文归入同一组。若省略 `theme`，则不显示分组标题。合著论文可在 `authors` 里只列核心作者（Core Authors），`Hengyu Wang` 会自动加粗。
 
-所有新增字段都可省略：不填 `thumbnail` 时论文条目回退为全宽文字（不显示占位配图）；`code_url`/`project_url` 不填则不显示对应链接。
+首页论文条目只显示：标题（点击跳转 `publication_url`，即 arXiv 链接）、作者、venue，以及可选的 `description` 摘要；不再单独列出 Paper / Writeup / Code / Project Page 链接。不填 `thumbnail` 时论文条目回退为全宽文字（不显示占位配图）。
 
 站点启用了 MathJax，数学内容可使用 `$...$`、`$$...$$`、`\(...\)`、`\[...\]`。`_config.yml` 中使用 `kramdown` 和 `math_engine: mathjax`。
 

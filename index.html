@@ -16,15 +16,18 @@ description: "Personal academic homepage of Hengyu Wang, an undergraduate studen
                 <td class="intro-copy-cell">
                   <p class="centered"><name>Hengyu Wang</name></p>
                   <p>
-                    I am an undergraduate student at
+                    I am Hengyu Wang, an undergraduate student (enrolled in 2023) at the
+                    School of Mathematical Sciences,
                     <a href="https://en.tongji.edu.cn/" target="_blank" rel="noreferrer">Tongji University</a>,
-                    studying mathematics and exploring optimization, artificial intelligence,
-                    and scientific computing.
+                    and an incoming PhD student at the Institute for Intelligent Computing,
+                    <a href="https://en.sjtu.edu.cn/" target="_blank" rel="noreferrer">Shanghai Jiao Tong University</a>,
+                    advised by Dongdong Ge and Yinyu Ye.
                   </p>
                   <p>
-                    This homepage collects my research, learning notes, and small records from
-                    campus life. I am especially interested in mathematical structure and learning
-                    systems that can help us search through difficult scientific problems.
+                    I am currently a research intern at the College of AI, Tsinghua University
+                    and Apex Intelligence, advised by
+                    <a href="https://collegeai.tsinghua.edu.cn/en/People/Full_time_PI/YongchaoChen.htm" target="_blank" rel="noreferrer">Yongchao Chen</a>.
+                    My research interests are self-evolving agents, AI4Math, and optimization.
                   </p>
                   <p class="centered profile-links">
                     <a href="mailto:why0510@tongji.edu.cn">Email</a> &nbsp;/&nbsp;
@@ -66,9 +69,6 @@ description: "Personal academic homepage of Hengyu Wang, an undergraduate studen
               <tr>
                 <td>
                   <heading>Research (Selected Publications)</heading>
-                  <p>
-                    Research results, project writeups, and paper reading records.
-                  </p>
                 </td>
               </tr>
             </tbody>
@@ -109,11 +109,6 @@ description: "Personal academic homepage of Hengyu Wang, an undergraduate studen
                   {{ research_authors | replace: 'Hengyu Wang', '<strong>Hengyu Wang</strong>' }}
                   <br>
                   <em>{{ post.venue | default: 'Research note' }}</em>
-                  <br>
-                  {% if post.publication_url %}<a href="{{ post.publication_url }}" target="_blank" rel="noreferrer">Paper</a> &nbsp;/&nbsp;{% endif %}
-                  {% if post.code_url %}<a href="{{ post.code_url }}" target="_blank" rel="noreferrer">Code</a> &nbsp;/&nbsp;{% endif %}
-                  {% if post.project_url %}<a href="{{ post.project_url }}" target="_blank" rel="noreferrer">Project Page</a> &nbsp;/&nbsp;{% endif %}
-                  <a href="{{ post.url | relative_url }}">Writeup</a>
                   {% if post.description %}
                   <p class="publication-abstract">{{ post.description }}</p>
                   {% endif %}
