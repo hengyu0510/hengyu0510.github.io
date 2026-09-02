@@ -14,6 +14,8 @@
   {% endif %}
   <title>{% if resolved_title %}{{ resolved_title }} - {% endif %}{{ site.title }}</title>
   <meta name="description" content="{{ resolved_description | strip_html | normalize_whitespace }}">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.7.0/lxgwwenkaiscreen.css">
   <link rel="stylesheet" href="{{ '/css/style.css' | relative_url }}">
   <script>
     window.MathJax = {

@@ -133,7 +133,7 @@ thumbnail_hover: "/assets/images/xxx.mp4"           # 可选：hover 时淡入�
 
 ## 样式约定
 
-样式集中在 `css/style.css`。当前首页直接采用经典学术个人主页模板：白色背景、Lato 字体、`max-width: 800px` 的居中 table 排版、News 滚动区和论文条目；文章页和关于页沿用同一套排版。修改样式时：
+样式集中在 `css/style.css`。当前首页直接采用经典学术个人主页模板：白色背景、`max-width: 800px` 的居中 table 排版、News 滚动区和论文条目；文章页和关于页沿用同一套排版。正文字体优先使用「霞鹜文楷（LXGW WenKai Screen）」，回退到 Lato / 系统 sans-serif——该 web 字体通过 `_layouts/default.html` 头部的 jsDelivr 链接 `lxgw-wenkai-screen-webfont@1.7.0/lxgwwenkaiscreen.css` 加载（`font-display: swap`，按 unicode-range 分片按需下载），字体族名写在 `css/style.css` 各 `font-family` 声明的首位；`@font-face` 里的 `'Lato'` 定义保持不变，只作为回退。修改样式时：
 
 - 优先复用 `:root` 里的纸张、文字、辅助文字、分隔线和链接颜色变量。
 - 保持移动端断点：`720px`、`480px`；旧 hero 模块仍使用 `820px` 作为内部粒子配置断点。
