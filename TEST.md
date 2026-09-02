@@ -11,7 +11,7 @@ node --check js/gallery.js
 
 ## 浏览器检查
 
-构建站点后，在桌面和移动端宽度检查：首页简介与头像、News、Selected Publications、Notes、Daily 是否正常排列。头像应为原版式椭圆形（`border-radius: 50% / 40%`），点击可打开原图。Selected Publications 中，设置了 `theme` 的论文上方会出现紫色主题小标题（相同 `theme` 归为一组）。论文条目默认使用全宽文字布局，不显示占位配图或重复标题；若某篇文章 front matter 提供了真实的 `thumbnail`（可再选配 `thumbnail_hover` 视频），该条目左侧会显示 160px 缩略图卡片，桌面端 hover 时淡入视频，移动端缩略图堆叠在文字上方。合著论文的作者行只列核心作者时，`Hengyu Wang` 应自动加粗。论文条目只显示标题、作者、venue 和可选摘要；标题点击应在新标签打开对应的 arXiv 链接（`publication_url`），条目内不再出现单独的 Paper / Writeup / Code / Project Page 链接。Daily 轮播应只包含 `assets/hero-slides/1.jpg`、`2.jpg`、`3.jpg` 三张图片，左右按钮可循环切换，浏览器控制台没有 JavaScript 或 WebGL 异常。
+构建站点后，在桌面和移动端宽度检查：首页简介与头像、News、Selected Publications、Notes、Daily 是否正常排列。头像应为原版式椭圆形（`border-radius: 50% / 40%`），点击可打开原图。Selected Publications 中，设置了 `theme` 的论文上方会出现紫色主题小标题（相同 `theme` 归为一组）。论文条目默认使用全宽文字布局，不显示占位配图或重复标题；若某篇文章 front matter 提供了真实的 `thumbnail`（可再选配 `thumbnail_hover` 视频），该条目左侧会显示 160px 缩略图卡片，桌面端 hover 时淡入视频，移动端缩略图堆叠在文字上方。合著论文的作者行只列核心作者时，`Hengyu Wang` 应自动加粗。论文条目只显示标题、作者、venue；标题点击应在新标签打开对应的 arXiv 链接（`publication_url`），条目内不再出现论文摘要，也没有单独的 Paper / Writeup / Code / Project Page 链接。News 标题与下方滚动内容之间应有明显间距。Daily 轮播应只包含 `assets/hero-slides/1.jpg`、`2.jpg`、`3.jpg` 三张图片，左右按钮可循环切换，浏览器控制台没有 JavaScript 或 WebGL 异常。
 
 ## Jekyll 构建
 

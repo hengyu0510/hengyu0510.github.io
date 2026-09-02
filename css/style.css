@@ -162,7 +162,7 @@ img { max-width: 100%; }
 .profile-photo { display: block; width: 100%; max-width: 100%; aspect-ratio: 1 / 1; margin: 0 auto; border-radius: 50% / 40%; object-fit: cover; }
 .section-table td { padding: 22px 0; vertical-align: middle; }
 .section-table + .section-table, .publication-table + .section-table { border-top: 1px solid #eee; }
-.news-scroller { max-height: 220px; overflow: auto; padding-right: 6px; scrollbar-width: thin; scrollbar-color: #b9b9b9 transparent; }
+.news-scroller { max-height: 220px; margin-top: 14px; overflow: auto; padding-right: 6px; scrollbar-width: thin; scrollbar-color: #b9b9b9 transparent; }
 .news-scroller::-webkit-scrollbar { width: 8px; }
 .news-scroller::-webkit-scrollbar-thumb { border-radius: 8px; background: rgba(0,0,0,.25); }
 .news-scroller::-webkit-scrollbar-track { background: transparent; }
@@ -181,7 +181,6 @@ img { max-width: 100%; }
 .publication-thumb-cell .two { width: 160px; height: 160px; opacity: 0; }
 .publication-thumb-cell .two video { display: block; width: 160px; height: 160px; object-fit: cover; border: 1px solid #eee; }
 .publication-row:hover .two { opacity: 1; }
-.publication-abstract { margin: 10px 0 0; color: #555; }
 /* Purple research sub-theme heading, mirroring the original Yongchao template. */
 .research-theme-row td { padding: 8px 0 0; border-top: 0; }
 .research-theme { color: purple; font-size: 20px; margin: 6px 0 0; }

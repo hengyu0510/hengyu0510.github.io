@@ -19,9 +19,12 @@ description: "Personal academic homepage of Hengyu Wang, an undergraduate studen
                     I am Hengyu Wang, an undergraduate student (enrolled in 2023) at the
                     School of Mathematical Sciences,
                     <a href="https://en.tongji.edu.cn/" target="_blank" rel="noreferrer">Tongji University</a>,
-                    and an incoming PhD student at the Institute for Intelligent Computing,
+                    and an incoming PhD student at the
+                    <a href="https://iic.sjtu.edu.cn/" target="_blank" rel="noreferrer">Institute for Intelligent Computing</a>,
                     <a href="https://en.sjtu.edu.cn/" target="_blank" rel="noreferrer">Shanghai Jiao Tong University</a>,
-                    advised by Dongdong Ge and Yinyu Ye.
+                    advised by
+                    <a href="https://www.acem.sjtu.edu.cn/faculty/gedongdong.html" target="_blank" rel="noreferrer">Dongdong Ge</a>
+                    and <a href="https://web.stanford.edu/~yyye/" target="_blank" rel="noreferrer">Yinyu Ye</a>.
                   </p>
                   <p>
                     I am currently a research intern at the College of AI, Tsinghua University
@@ -109,9 +112,6 @@ description: "Personal academic homepage of Hengyu Wang, an undergraduate studen
                   {{ research_authors | replace: 'Hengyu Wang', '<strong>Hengyu Wang</strong>' }}
                   <br>
                   <em>{{ post.venue | default: 'Research note' }}</em>
-                  {% if post.description %}
-                  <p class="publication-abstract">{{ post.description }}</p>
-                  {% endif %}
                 </td>
               </tr>
               {% endfor %}
